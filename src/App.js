@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import useForm from "react-hook-form";
+import "./App.css";
 
-const {app} = window.require('electron').remote;
+const { app } = window.require("electron").remote;
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React + Electron = <span role="img" aria-label="love">😍</span></h2>
-        </div>
-        <p className="App-intro">
-          <b> Release 0.2.7 </b>
-          Version: {app.getVersion()}
-        </p>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className="container">
+      <form>
+        <input
+          type="text"
+          className="form-control mr-sm-2"
+          placeholder="paste you url"
+          name="url"
+        />
+        <input type="submit" className="btn btn-primary my-2 my-sm-0" />
+      </form>
+    </div>
+  );
 }
-
-export default App;

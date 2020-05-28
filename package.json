@@ -10,6 +10,7 @@
     "electron-log": "^3.0.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hook-form": "^5.7.2",
     "update-electron-app": "^1.2.0"
   },
   "devDependencies": {
