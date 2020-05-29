@@ -1,15 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Content = () => {
+const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   let myArray = [{}];
   const onSubmit = (data, e) => {
     let temps = data.url;
 
-    //myArray.push(temps.repeat(13).split(" "));
-    myArray = { ...myArray, url: temps.repeat(13).split(" ") };
+    myArray = { ...myArray, url: temps.repeat(50).split(",") };
     console.log(myArray);
 
     localStorage.setItem("url", JSON.stringify(myArray));
@@ -42,6 +41,7 @@ const Content = () => {
         <input
           type="submit"
           className="btn btn-primary btn-block my-2 my-sm-0"
+          onClick={props.myContentFunc}
         />
       </form>
     </div>

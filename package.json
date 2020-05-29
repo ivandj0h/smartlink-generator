@@ -1,6 +1,6 @@
 {
   "name": "cra-electron",
-  "description": "CRA + Electron sitting in a tree",
+  "description": "ElectronReact Duplicate String",
   "author": "Kitze",
   "version": "0.2.7",
   "private": true,
@@ -11,6 +11,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hook-form": "^5.7.2",
+    "react-router-dom": "^5.2.0",
     "update-electron-app": "^1.2.0"
   },
   "devDependencies": {

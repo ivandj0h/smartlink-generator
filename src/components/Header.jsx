@@ -1,24 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           LINK GENERATOR
-        </a>
+        </Link>
 
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
-                ADD LINK <span className="sr-only">(current)</span>
-              </a>
+              <Link className="nav-link" to="/">
+                ADD LINK
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                DOWNLOAD LINK
-              </a>
+              <Link className="nav-link" to="/download">
+                DOWNLOAD LINK <span>{props.basketNumber}</span>
+              </Link>
             </li>
           </ul>
         </div>
