@@ -15,6 +15,10 @@ To getting start with this Application, simply clone this repository by running 
 
 or you can directly download the zip file by clicking the download button on the top right side of this repository.
 
+### ScreenShoot
+
+![Dashboard](screenshoot/input.jpg "This is input captured")
+
 ```
 ...this documentation still on progress
 ```
