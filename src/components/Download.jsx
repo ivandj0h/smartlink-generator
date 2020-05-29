@@ -32,7 +32,7 @@ const Download = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-md-4 mx-auto">
           <div className="list-group">
             {urls.map((url) => (
               <a
@@ -40,7 +40,12 @@ const Download = () => {
                 key={url.id}
                 className="list-group-item list-group-item-action"
               >
-                {url.temps}
+                Instagram UserAccount : <b>{url.dataUser.username}</b>
+                <p>
+                  <span className="badge badge-primary">
+                    {url.dataUser.temps}
+                  </span>
+                </p>
               </a>
             ))}
           </div>

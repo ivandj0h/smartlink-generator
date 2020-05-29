@@ -5,19 +5,24 @@ import firebase from "../firebase";
 const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
-  // let myArray = [{}];
   const onSubmit = (data, e) => {
-    let temps = data.url;
+    const dataUser = {
+      username: data.username,
+      temps: data.url,
+    };
     //let pena = temps.repeat(3).split(",");
     // myArray = { ...myArray, url: temps.repeat(3).split(",") };
     // console.log(myArray);
-
-    firebase
-      .firestore()
-      .collection("urls")
-      .add({
-        temps,
-      });
+    if (!dataUser) {
+      firebase
+        .firestore()
+        .collection("urls")
+        .add({
+          dataUser,
+        });
+    } else {
+      console.log("error");
+    }
 
     e.target.reset();
   };
@@ -35,7 +40,18 @@ const Content = (props) => {
             <input
               type="text"
               className="form-control mr-sm-2"
-              placeholder="paste you url"
+              placeholder="Instagram Username"
+              name="username"
+              ref={register({
+                require: true,
+                message: "Username tidak boleh kosong",
+              })}
+            />
+            <br />
+            <input
+              type="text"
+              className="form-control mr-sm-2"
+              placeholder="Instagram Url"
               name="url"
               ref={register({
                 require: true,
@@ -46,12 +62,7 @@ const Content = (props) => {
               })}
             />
             <br />
-            {errors.url && (
-              <div className="alert alert-dismissible alert-danger">
-                <h4 className="alert-heading">Error!</h4>
-                <p className="mb-0">{errors.url.message}</p>
-              </div>
-            )}
+            {errors.username && errors.url}
             <input
               type="submit"
               className="btn btn-primary btn-block my-2 my-sm-0"

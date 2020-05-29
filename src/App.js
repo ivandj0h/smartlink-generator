@@ -8,24 +8,20 @@ import Download from "./components/Download";
 const { app } = window.require("electron").remote;
 
 const App = () => {
-  const [basket, setBasket] = useState(0);
+  // const [basket, setBasket] = useState(0);
 
-  const addToBasket = () => {
-    setBasket(basket + 1);
-  };
+  // const addToBasket = () => {
+  //   setBasket(basket + 1);
+  // };
 
   return (
     <Fragment>
       <BrowserRouter>
-        <Header basketNumber={basket} />
+        <Header />
         <Switch>
           <div className="container">
-            <Route
-              exact
-              path="/"
-              render={() => <Content myContentFunc={addToBasket} />}
-            />
-            <Route path="/download" component={Download} />
+            <Route exact path="/" render={() => <Content />} />
+            <Route path="/download" render={() => <Download />} />
           </div>
         </Switch>
       </BrowserRouter>
