@@ -8,7 +8,11 @@ const App = () => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    alert(data.url.repeat(30));
+    let temps = new Array();
+    temps = data.url.split(" ");
+    localStorage.setItem("url", JSON.stringify(temps[0]));
+
+    console.log(temps);
   };
 
   return (
