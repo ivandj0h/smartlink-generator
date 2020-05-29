@@ -19,7 +19,7 @@ const Content = (props) => {
         name: "instagram",
         url: myArray,
       });
-    //localStorage.setItem("url", JSON.stringify(myArray));
+
     e.target.reset();
   };
 
