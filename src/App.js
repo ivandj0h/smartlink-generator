@@ -4,17 +4,17 @@ import "./App.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Download from "./components/Download";
-import firebase from "./firebase";
+// import firebase from "./firebase";
 
 const { app } = window.require("electron").remote;
 
-firebase
-  .firestore()
-  .collection("urls")
-  .add({
-    title: "Ivandi",
-    url: "https://ivandjoh.com",
-  });
+// firebase
+//   .firestore()
+//   .collection("urls")
+//   .add({
+//     title: "Ivandi",
+//     url: "https://ivandjoh.com",
+//   });
 
 const App = () => {
   const [basket, setBasket] = useState(0);

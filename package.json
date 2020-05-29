@@ -5,10 +5,10 @@
   "version": "0.2.7",
   "private": true,
   "dependencies": {
-    "cross-env": "6.0.2",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "electron-is-dev": "1.1.0",
     "electron-log": "^3.0.8",
-    "env-cmd": "^10.1.0",
     "firebase": "^7.14.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -39,9 +39,7 @@
     "electron-build": "electron-builder",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "start-dev": "env-cmd dev concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "build-dev": "env-cmd dev yarn react-build && yarn electron-build"
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "browserslist": {
     "production": [

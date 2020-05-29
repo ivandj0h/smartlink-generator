@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import firebase from "../firebase";
 
 const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
@@ -8,10 +9,17 @@ const Content = (props) => {
   const onSubmit = (data, e) => {
     let temps = data.url;
 
-    myArray = { ...myArray, url: temps.repeat(50).split(",") };
+    myArray = { ...myArray, url: temps.repeat(3).split(",") };
     console.log(myArray);
 
-    localStorage.setItem("url", JSON.stringify(myArray));
+    firebase
+      .firestore()
+      .collection("urls")
+      .add({
+        name: "instagram",
+        url: myArray,
+      });
+    //localStorage.setItem("url", JSON.stringify(myArray));
     e.target.reset();
   };
 
