@@ -11,7 +11,6 @@ const App = () => {
   const [basket, setBasket] = useState(0);
 
   const addToBasket = () => {
-    //console.log("clicked!");
     setBasket(basket + 1);
   };
 
