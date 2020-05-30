@@ -144,7 +144,7 @@ const Content = (props) => {
             <br />
             <input
               type="submit"
-              className="btn btn-primary btn-block my-2 my-sm-0"
+              className="btn btn-secondary btn-block my-2 my-sm-0"
               onClick={props.myContentFunc}
             />
           </form>

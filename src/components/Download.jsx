@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../firebase";
+import ExportPdf from "./ExportPdf";
 
 function useUrls() {
   const [urls, setUrls] = useState([]);
@@ -55,27 +56,28 @@ const Download = () => {
           {urls.map((url) => (
             <div className="card mt-3 key={url.id}">
               <h5 className="card-header">{url.datauser.iguser}</h5>
+              <ExportPdf />
+              <button
+                className="btn btn-secondary btn-block my-2 my-sm-0"
+                onClick={() => deleteItem(url.id)}
+              >
+                Clear Results
+              </button>
               <div className="alert alert-dismissible alert-secondary">
-                <strong className="float-left">
+                <strong className="text-secondary">
                   {url.datauser.igpost.split(",")}
                 </strong>
-                <button
-                  className="btn btn-sm btn-secondary float-right"
-                  onClick={() => deleteItem(url.id)}
-                >
-                  Clear Results
-                </button>
               </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   {url.igduplicate.map((ig, i) => (
                     <li keys={i} className="list-group-item">
                       <a href={ig} target="_blank">
-                        <span className="text-danger">
+                        <span className="text-primary">
                           https://instagram.com/p/
                           {ig.replace(
                             ig.substring(0, ig.length - 1),
-                            makeid(5)
+                            makeid(15)
                           )}
                         </span>
                       </a>
