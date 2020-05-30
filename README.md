@@ -2,8 +2,8 @@
 
 ### About ElectronReact Duplicate String
 
-This Application is use to duplicate any input string on textbox and save it into localstorage.
-This Application was developed using ReactJS combine with ElectronJS.
+This Application is use to duplicate any input string on textbox and save it into Firebase.
+This Application was developed using React combine with Electron and Firebase.
 
 ### Getting Started
 
