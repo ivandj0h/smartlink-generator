@@ -8,8 +8,7 @@ const Header = (props) => {
         <Link className="navbar-brand" to="/">
           LINK GENERATOR
         </Link>
-
-        <div className="collapse navbar-collapse" id="navbarColor01">
+        {/* <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
@@ -22,7 +21,7 @@ const Header = (props) => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </nav>
     </div>
   );

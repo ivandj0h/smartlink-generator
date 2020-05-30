@@ -7,5 +7,6 @@ body {
 }
 
 .card .card-body {
-  overflow: auto !important;
+  overflow-y: scroll !important;
+  height: 150px !important;
 }

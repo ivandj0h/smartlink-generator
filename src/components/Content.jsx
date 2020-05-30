@@ -9,7 +9,7 @@ const Content = (props) => {
 
   const onSubmit = (data, e) => {
     let myArray = [{}];
-    myArray = { ...myArray, s: data.url.repeat(3).split(",") };
+    myArray = { ...myArray, s: data.url.repeat(50).split(",") };
 
     const datauser = {
       iguser: data.username,
@@ -31,11 +31,11 @@ const Content = (props) => {
     <div className="container">
       <div className="row">
         <div className="col-lg-12">
-          <h2>Add New Link</h2>
+          <h2>Add New</h2>
         </div>
       </div>
       <div className="row">
-        <div className="col-md-4 mx-auto">
+        <div className="col-md-6 mx-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
