@@ -17,8 +17,8 @@ or you can directly download the zip file by clicking the download button on the
 
 ### ScreenShoot
 
-![Dashboard](screenshoot/input.jpg "This is input captured")
-![Dashboard](screenshoot/results.jpg "This is the results captured")
+![Dashboard](captured/input.jpg "This is input captured")
+![Dashboard](captured/results.jpg "This is the results captured")
 
 ```
 ...this documentation still on progress
