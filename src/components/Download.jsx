@@ -68,7 +68,7 @@ const Download = () => {
                   {url.datauser.igpost.split(",")}
                 </strong>
               </div>
-              <div className="alert alert-dismissible alert-light">
+              <div className="alert alert-dismissible alert-light border-btm">
                 Total Link yang di Generate Sebanyak :{" "}
                 <strong className="text-primary">
                   {url.igduplicate.length}

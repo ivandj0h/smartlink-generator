@@ -11,6 +11,10 @@ body {
   height: 150px !important;
 }
 
+.border-btm {
+  border-bottom: 1px solid #ccc !important;
+}
+
 /* unvisited link */
 a:link {
   color: red;
