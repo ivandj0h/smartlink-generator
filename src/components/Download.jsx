@@ -68,6 +68,13 @@ const Download = () => {
                   {url.datauser.igpost.split(",")}
                 </strong>
               </div>
+              <div className="alert alert-dismissible alert-light">
+                Total Link yang di Generate Sebanyak :{" "}
+                <strong className="text-primary">
+                  {url.igduplicate.length}
+                </strong>{" "}
+                Links
+              </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   {url.igduplicate.map((ig, i) => (
