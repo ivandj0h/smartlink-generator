@@ -5,3 +5,7 @@ body {
   text-align: center;
   padding-top: 80px
 }
+
+.card .card-body {
+  overflow: auto !important;
+}

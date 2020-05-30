@@ -2,35 +2,35 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../firebase";
 
+import Download from "./Download";
+
 const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data, e) => {
-    const dataUser = {
-      username: data.username,
-      temps: data.url,
+    let myArray = [{}];
+    myArray = { ...myArray, s: data.url.repeat(3).split(",") };
+
+    const datauser = {
+      iguser: data.username,
+      igpost: data.url,
     };
-    //let pena = temps.repeat(3).split(",");
-    // myArray = { ...myArray, url: temps.repeat(3).split(",") };
-    // console.log(myArray);
-    if (!dataUser) {
-      firebase
-        .firestore()
-        .collection("urls")
-        .add({
-          dataUser,
-        });
-    } else {
-      console.log("error");
-    }
+
+    firebase
+      .firestore()
+      .collection("urls")
+      .add({
+        datauser,
+        igduplicate: myArray.s,
+      });
 
     e.target.reset();
   };
 
   return (
     <div className="container">
-      <div class="row">
-        <div class="col-lg-12">
+      <div className="row">
+        <div className="col-lg-12">
           <h2>Add New Link</h2>
         </div>
       </div>
@@ -69,6 +69,11 @@ const Content = (props) => {
               onClick={props.myContentFunc}
             />
           </form>
+        </div>
+
+        <div className="col-lg-12">
+          <br />
+          <Download />
         </div>
       </div>
     </div>

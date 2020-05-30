@@ -26,29 +26,30 @@ const Download = () => {
   console.log(urls);
   return (
     <div className="container">
-      <div class="row">
-        <div class="col-lg-12">
+      <div className="row">
+        <div className="col-lg-12">
           <h2>Your Base Link</h2>
         </div>
       </div>
       <div className="row">
-        <div className="col-md-4 mx-auto">
-          <div className="list-group">
-            {urls.map((url) => (
-              <a
-                href="#"
-                key={url.id}
-                className="list-group-item list-group-item-action"
-              >
-                Instagram UserAccount : <b>{url.dataUser.username}</b>
-                <p>
-                  <span className="badge badge-primary">
-                    {url.dataUser.temps}
-                  </span>
-                </p>
-              </a>
-            ))}
-          </div>
+        <div className="col-md-12 mx-auto">
+          {urls.map((url) => (
+            <div className="card mt-3 key={url.id}">
+              <h5 className="card-header">{url.datauser.iguser}</h5>
+              <div className="card-body">
+                <h6 className="card-subtitle text-muted">
+                  {url.datauser.igpost}
+                </h6>
+                <ul className="list-group list-group-flush">
+                  {url.igduplicate.map((ig, i) => (
+                    <li keys={i} className="list-group-item">
+                      <span className="badge badge-primary">{ig}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
