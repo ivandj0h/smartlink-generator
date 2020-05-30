@@ -1,13 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../firebase";
-
 import Download from "./Download";
 
 const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data, e) => {
+    e.preventDefault();
+
     let myArray = [{}];
     myArray = { ...myArray, s: data.url.repeat(50).split(",") };
 
@@ -23,7 +24,6 @@ const Content = (props) => {
         datauser,
         igduplicate: myArray.s,
       });
-
     e.target.reset();
   };
 
@@ -31,38 +31,117 @@ const Content = (props) => {
     <div className="container">
       <div className="row">
         <div className="col-lg-12">
-          <h2>Add New</h2>
+          <h3>Input Data Baru</h3>
         </div>
       </div>
       <div className="row">
-        <div className="col-md-6 mx-auto">
+        <div className="col-md-8 mx-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
-              className="form-control mr-sm-2"
+              id="username"
+              className="form-control mr-sm-2 mb-2"
               placeholder="Instagram Username"
               name="username"
-              ref={register({
-                require: true,
-                message: "Username tidak boleh kosong",
-              })}
+              aria-invalid={errors.username ? "true" : "false"}
+              aria-describedby="error-username-required error-username-maxLength"
+              ref={register({ required: true, maxLength: 10, minLength: 4 })}
             />
-            <br />
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-username-required"
+              style={{
+                display:
+                  errors.username && errors.username.type === "required"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Kolom ini tidak boleh kosong!
+            </span>
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-username-minLength"
+              style={{
+                display:
+                  errors.username && errors.username.type === "minLength"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Inputannya terlalu singkat!
+            </span>
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-username-maxLength"
+              style={{
+                display:
+                  errors.username && errors.username.type === "maxLength"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Inputannya kepanjangan!
+            </span>
+
             <input
-              type="text"
+              type="url"
+              id="url"
               className="form-control mr-sm-2"
-              placeholder="Instagram Url"
+              placeholder="Instagram url (taruh koma dibelakang inputan)"
               name="url"
+              aria-invalid={errors.url ? "true" : "false"}
+              aria-describedby="error-url-required error-url-maxLength"
               ref={register({
-                require: true,
-                minLength: {
-                  value: 5,
-                  message: "value yang dimasukan terlalu singkat",
-                },
+                required: true,
+                maxLength: 100,
+                minLength: 10,
+                pattern: "https://.*",
               })}
             />
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-url-required"
+              style={{
+                display:
+                  errors.url && errors.url.type === "required"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Kolom ini tidak boleh kosong!
+            </span>
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-url-minLength"
+              style={{
+                display:
+                  errors.url && errors.url.type === "minLength"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Inputannya terlalu singkat!
+            </span>
+            <span
+              className="text-danger"
+              role="alert"
+              id="error-url-maxLength"
+              style={{
+                display:
+                  errors.url && errors.url.type === "maxLength"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              Inputannya kepanjangan!
+            </span>
             <br />
-            {errors.username && errors.url}
             <input
               type="submit"
               className="btn btn-primary btn-block my-2 my-sm-0"
@@ -72,7 +151,6 @@ const Content = (props) => {
         </div>
 
         <div className="col-lg-12">
-          <br />
           <Download />
         </div>
       </div>

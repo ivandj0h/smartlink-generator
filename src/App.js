@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -8,12 +8,6 @@ import Download from "./components/Download";
 const { app } = window.require("electron").remote;
 
 const App = () => {
-  // const [basket, setBasket] = useState(0);
-
-  // const addToBasket = () => {
-  //   setBasket(basket + 1);
-  // };
-
   return (
     <Fragment>
       <BrowserRouter>
