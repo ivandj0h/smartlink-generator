@@ -10,3 +10,24 @@ body {
   overflow-y: scroll !important;
   height: 150px !important;
 }
+
+/* unvisited link */
+a:link {
+  color: red;
+  text-decoration: none !important;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}

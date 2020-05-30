@@ -45,7 +45,7 @@ const Content = (props) => {
               name="username"
               aria-invalid={errors.username ? "true" : "false"}
               aria-describedby="error-username-required error-username-maxLength"
-              ref={register({ required: true, maxLength: 10, minLength: 4 })}
+              ref={register({ required: true, maxLength: 50, minLength: 4 })}
             />
             <span
               className="text-danger"

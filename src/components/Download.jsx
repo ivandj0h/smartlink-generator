@@ -23,7 +23,17 @@ function useUrls() {
 const Download = () => {
   const urls = useUrls();
 
-  console.log(urls);
+  // console.log(urls);
+  const makeid = (length) => {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
 
   const deleteItem = (id) => {
     firebase
@@ -60,7 +70,15 @@ const Download = () => {
                 <ul className="list-group list-group-flush">
                   {url.igduplicate.map((ig, i) => (
                     <li keys={i} className="list-group-item">
-                      <span className="badge badge-primary">{ig}</span>
+                      <a href={ig} target="_blank">
+                        <span className="text-danger">
+                          https://instagram.com/p/
+                          {ig.replace(
+                            ig.substring(0, ig.length - 1),
+                            makeid(5)
+                          )}
+                        </span>
+                      </a>
                     </li>
                   ))}
                 </ul>
