@@ -35,8 +35,24 @@ function usePdf() {
 const ExportPdf = () => {
   const pdfs = usePdf();
 
-  console.log(pdfs);
-  const exportPdf = () => {
+  const makeid = (length) => {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
+
+  //console.log(pdfs);
+
+  const x = pdfs.map((pd) => pd.datauser.id);
+
+  const exportPdf = ({ x }) => {
+    console.log(x);
+
     const name = "POLRES TABALONG POLDA KALSEL";
     const lMargin = 10;
     const rMargin = 15;
@@ -122,7 +138,7 @@ const ExportPdf = () => {
     // doc.textWithLink("https://instagram.com/p/hHIBdChV0Z9gHOA6", 15, 35, {
     //   url: "https://www.instagram.com/p/CAwTjhXgBnm/?igshid=evuxeyfsxxd6",);
 
-    doc.save("instagram_links_auto_generate.pdf");
+    //doc.save("instagram_links_auto_generate.pdf");
   };
 
   return (

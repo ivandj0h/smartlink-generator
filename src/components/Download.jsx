@@ -56,8 +56,8 @@ const Download = () => {
       </div>
       <div className="row">
         <div className="col-md-12 mx-auto">
-          {urls.map((url) => (
-            <div className="card mt-3 key={url.id}">
+          {urls.map((url, i) => (
+            <div className="card mt-3" key={i}>
               <h5 className="card-header">{url.datauser.iguser}</h5>
               <ExportPdf />
               <button
