@@ -36,7 +36,11 @@ const Download = () => {
     return result;
   };
 
+  localStorage.setItem("dataUrls", JSON.stringify(urls));
+
   const deleteItem = (id) => {
+    localStorage.removeItem(id);
+
     firebase
       .firestore()
       .collection("urls")
@@ -71,14 +75,14 @@ const Download = () => {
               <div className="alert alert-dismissible alert-light border-btm">
                 Total Link yang di Generate Sebanyak :{" "}
                 <strong className="text-primary">
-                  {url.igduplicate.length}
+                  {url.igduplicate.length - 2}
                 </strong>{" "}
                 Links
               </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   {url.igduplicate.map((ig, i) => (
-                    <li keys={i} className="list-group-item">
+                    <li key={i} className="list-group-item">
                       <a href={ig} target="_blank">
                         <span className="text-primary">
                           https://instagram.com/p/

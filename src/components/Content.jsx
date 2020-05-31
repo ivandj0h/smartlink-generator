@@ -10,7 +10,7 @@ const Content = (props) => {
     e.preventDefault();
 
     let myArray = [{}];
-    myArray = { ...myArray, s: data.url.repeat(50).split(",") };
+    myArray = { ...myArray, s: data.url.repeat(101).split(",") };
 
     const datauser = {
       iguser: data.username,
@@ -24,6 +24,8 @@ const Content = (props) => {
         datauser,
         igduplicate: myArray.s,
       });
+
+    // localStorage.setItem("datauser", JSON.stringify(myArray.s));
     e.target.reset();
   };
 
