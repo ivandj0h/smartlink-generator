@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../firebase";
-import Download from "./Download";
 
 const Content = (props) => {
   const { register, handleSubmit, errors } = useForm();
@@ -152,9 +151,7 @@ const Content = (props) => {
           </form>
         </div>
 
-        <div className="col-lg-12">
-          <Download />
-        </div>
+        <div className="col-lg-12"></div>
       </div>
     </div>
   );

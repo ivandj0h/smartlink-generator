@@ -48,11 +48,9 @@ const ExportPdf = () => {
 
   //console.log(pdfs);
 
-  const x = pdfs.map((pd) => pd.datauser.id);
+  //const x = pdfs.map((pd) => pd.datauser.id);
 
-  const exportPdf = ({ x }) => {
-    console.log(x);
-
+  const exportPdf = () => {
     const name = "POLRES TABALONG POLDA KALSEL";
     const lMargin = 10;
     const rMargin = 15;
@@ -138,7 +136,7 @@ const ExportPdf = () => {
     // doc.textWithLink("https://instagram.com/p/hHIBdChV0Z9gHOA6", 15, 35, {
     //   url: "https://www.instagram.com/p/CAwTjhXgBnm/?igshid=evuxeyfsxxd6",);
 
-    //doc.save("instagram_links_auto_generate.pdf");
+    doc.save("instagram_links_auto_generate.pdf");
   };
 
   return (
