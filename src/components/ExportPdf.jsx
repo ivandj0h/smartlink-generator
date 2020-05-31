@@ -1,26 +1,42 @@
 import React, { useState, useEffect } from "react";
+import firebase from "../firebase";
 import * as jsPDF from "jspdf";
 
 function usePdf() {
   const [pdfs, setPdfs] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("dataUrls"));
-    const newPdfs = data.map((d) => ({
-      id: d.id,
-      ...d.datauser,
-      ...d.igduplicate,
-    }));
-    setPdfs(newPdfs);
+    //   const data = JSON.parse(localStorage.getItem("dataUrls"));
+    //   const newPdfs = data.map((d) => ({
+    //     id: d.id,
+    //     ...d.datauser,
+    //     ...d.igduplicate,
+    //   }));
+    //   setPdfs(newPdfs);
+    // }, []);
+    // return pdfs;
+
+    const unsubscribe = firebase
+      .firestore()
+      .collection("urls")
+      .onSnapshot((snapshot) => {
+        const newUrl = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPdfs(newUrl);
+      });
+    return () => unsubscribe();
   }, []);
+
   return pdfs;
 }
 
 const ExportPdf = () => {
   const pdfs = usePdf();
 
+  console.log(pdfs);
   const exportPdf = () => {
-    //console.log(pdfs);
     const name = "POLRES TABALONG POLDA KALSEL";
     const lMargin = 10;
     const rMargin = 15;
@@ -83,14 +99,28 @@ const ExportPdf = () => {
 
     doc.addPage();
     doc.text("*INSTAGRAM : 1 Postingan*", 10, 30);
-    doc.text("1.", 10, 35);
-    doc.setTextColor(6, 69, 173);
-    doc.textWithLink(
-      "https://www.instagram.com/p/CACSuOgA98E/?igshid=1b3jsbor75bcu",
-      15,
-      35,
-      { url: "https://www.instagram.com/p/CACSuOgA98E/?igshid=1b3jsbor75bcu" }
-    );
+
+    let links = [
+      "https://instagram.com/p/h22fJdbDKYAzOkR6",
+      "https://instagram.com/p/h5lRvm2BINhq1s26",
+      "https://instagram.com/p/bgchFY81GDXM6Ja6",
+      "https://instagram.com/p/sFGh4jnBzpJPpX26",
+    ];
+
+    let links2 = "https://www.instagram.com/p/CAwTjhXgBnm/?igshid=evuxeyfsxxd6";
+    let i;
+    for (i = 0; i < links.length; i++) {
+      let newLink = {
+        url: links2 + links[i].split("/p/").pop(),
+      };
+
+      doc.setTextColor(6, 69, 173);
+      doc.text(10, 35 + i * 5, i + 1 + ". " + newLink.url);
+    }
+    // doc.text("1.", 10, 35);
+    // doc.setTextColor(6, 69, 173);
+    // doc.textWithLink("https://instagram.com/p/hHIBdChV0Z9gHOA6", 15, 35, {
+    //   url: "https://www.instagram.com/p/CAwTjhXgBnm/?igshid=evuxeyfsxxd6",);
 
     doc.save("instagram_links_auto_generate.pdf");
   };

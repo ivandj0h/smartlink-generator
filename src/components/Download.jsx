@@ -24,7 +24,6 @@ function useUrls() {
 const Download = () => {
   const urls = useUrls();
 
-  // console.log(urls);
   const makeid = (length) => {
     var result = "";
     var characters =
@@ -36,10 +35,10 @@ const Download = () => {
     return result;
   };
 
-  localStorage.setItem("dataUrls", JSON.stringify(urls));
+  //localStorage.setItem("dataUrls", JSON.stringify(urls));
 
   const deleteItem = (id) => {
-    localStorage.removeItem(id);
+    //localStorage.removeItem(id);
 
     firebase
       .firestore()
