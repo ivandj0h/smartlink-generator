@@ -150,8 +150,6 @@ const Content = (props) => {
             />
           </form>
         </div>
-
-        <div className="col-lg-12"></div>
       </div>
     </div>
   );
