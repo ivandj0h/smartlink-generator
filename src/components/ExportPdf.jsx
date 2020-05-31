@@ -1,64 +1,17 @@
-import React, { useState, useEffect } from "react";
-import firebase from "../firebase";
+import React from "react";
 import * as jsPDF from "jspdf";
 
-function usePdf() {
-  const [pdfs, setPdfs] = useState([]);
-
-  useEffect(() => {
-    //   const data = JSON.parse(localStorage.getItem("dataUrls"));
-    //   const newPdfs = data.map((d) => ({
-    //     id: d.id,
-    //     ...d.datauser,
-    //     ...d.igduplicate,
-    //   }));
-    //   setPdfs(newPdfs);
-    // }, []);
-    // return pdfs;
-
-    const unsubscribe = firebase
-      .firestore()
-      .collection("urls")
-      .onSnapshot((snapshot) => {
-        const newUrl = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setPdfs(newUrl);
-      });
-    return () => unsubscribe();
-  }, []);
-
-  return pdfs;
-}
-
 const ExportPdf = () => {
-  const pdfs = usePdf();
-
-  const makeid = (length) => {
-    var result = "";
-    var characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
-
-  //console.log(pdfs);
-
-  //const x = pdfs.map((pd) => pd.datauser.id);
-
-  const exportPdf = () => {
+  function exportPdf() {
     const name = "POLRES TABALONG POLDA KALSEL";
     const lMargin = 10;
     const rMargin = 15;
     const pdfInMM = 330;
     const paragraphAwal =
       "Mohon ijin Jenderal, melaporkan kegiatan Pelaksanaan *Sosisalisasi melalui Media Elektronik dalam penerimaan terpadu anggota Polri T.A. 2020 di Wilayah Hukum Polres Tabalong* sbb:";
+
     const dmy = new Date();
-    var months = [
+    let months = [
       "January",
       "February",
       "March",
@@ -72,9 +25,10 @@ const ExportPdf = () => {
       "November",
       "December",
     ];
+
     const tanggal =
       dmy.getDate() + " " + months[dmy.getMonth()] + " " + dmy.getFullYear();
-    const hasil = pdfs.map((pdf) => pdf.id);
+
     const doc = new jsPDF({
       unit: "mm",
       orientation: "p",
@@ -89,7 +43,6 @@ const ExportPdf = () => {
 
     // (10(makin ke kiri), 100(makin kebawah))
     doc.setFontSize(12);
-
     doc.text(name, 10, 20);
     doc.setFontSize(10);
     doc.text("Kepada Yth. : Kapolda Kalsel.", 10, 30);
@@ -131,23 +84,19 @@ const ExportPdf = () => {
       doc.setTextColor(6, 69, 173);
       doc.text(10, 35 + i * 5, i + 1 + ". " + newLink.url);
     }
-    // doc.text("1.", 10, 35);
-    // doc.setTextColor(6, 69, 173);
-    // doc.textWithLink("https://instagram.com/p/hHIBdChV0Z9gHOA6", 15, 35, {
-    //   url: "https://www.instagram.com/p/CAwTjhXgBnm/?igshid=evuxeyfsxxd6",);
 
     doc.save("instagram_links_auto_generate.pdf");
-  };
+  }
 
   return (
-    <div>
+    <>
       <button
         className="btn btn-primary btn-block my-2 my-sm-0"
         onClick={() => exportPdf()}
       >
         Export Pdf
       </button>
-    </div>
+    </>
   );
 };
 

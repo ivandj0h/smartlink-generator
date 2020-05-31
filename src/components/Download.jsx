@@ -39,7 +39,6 @@ const Download = () => {
 
   const deleteItem = (id) => {
     //localStorage.removeItem(id);
-
     firebase
       .firestore()
       .collection("urls")
