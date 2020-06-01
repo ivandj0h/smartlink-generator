@@ -3,14 +3,14 @@ import "firebase/analytics";
 import "firebase/firestore";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyDHyOWtQEl7kNAP8sD5F67F_Ih0B2yrw24",
-  authDomain: "electron-react.firebaseapp.com",
-  databaseURL: "https://electron-react.firebaseio.com",
-  projectId: "electron-react",
-  storageBucket: "electron-react.appspot.com",
-  messagingSenderId: "430325178667",
-  appId: "1:430325178667:web:a4d8c8d9fda45462f8e56e",
-  measurementId: "G-406R853S6D",
+  apiKey: "AIzaSyCfvrF1jmbmeZ8xUp4ghjON5MQ4TXYmwLo",
+  authDomain: "link-generate-tblg.firebaseapp.com",
+  databaseURL: "https://link-generate-tblg.firebaseio.com",
+  projectId: "link-generate-tblg",
+  storageBucket: "link-generate-tblg.appspot.com",
+  messagingSenderId: "190788353250",
+  appId: "1:190788353250:web:b1712dee3bc2cf769e32bb",
+  measurementId: "G-XR0V4C9T24",
 };
 
 firebase.initializeApp(firebaseConfig);

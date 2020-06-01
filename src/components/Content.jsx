@@ -42,7 +42,7 @@ const Content = (props) => {
               type="text"
               id="username"
               className="form-control mr-sm-2 mb-2"
-              placeholder="Instagram Username"
+              placeholder="Masukan Username Sosmed Anda"
               name="username"
               aria-invalid={errors.username ? "true" : "false"}
               aria-describedby="error-username-required error-username-maxLength"
@@ -92,7 +92,7 @@ const Content = (props) => {
               type="url"
               id="url"
               className="form-control mr-sm-2"
-              placeholder="Instagram url (taruh koma dibelakang inputan)"
+              placeholder="Masukan URL Sosmed Anda (taruh koma dibelakang inputan)"
               name="url"
               aria-invalid={errors.url ? "true" : "false"}
               aria-describedby="error-url-required error-url-maxLength"

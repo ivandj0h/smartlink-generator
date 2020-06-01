@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../firebase";
-import ExportPdf from "./ExportPdf";
+//import ExportPdf from "./ExportPdf";
 
 function useUrls() {
   const [urls, setUrls] = useState([]);
@@ -44,6 +44,7 @@ const Download = () => {
       .collection("urls")
       .doc(id)
       .delete();
+    //alert("links sementara ini disable, hubungi admin!");
   };
 
   return (
@@ -58,7 +59,7 @@ const Download = () => {
           {urls.map((url, i) => (
             <div className="card mt-3" key={i}>
               <h5 className="card-header">{url.datauser.iguser}</h5>
-              <ExportPdf />
+
               <button
                 className="btn btn-secondary btn-block my-2 my-sm-0"
                 onClick={() => deleteItem(url.id)}
@@ -79,19 +80,45 @@ const Download = () => {
               </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
-                  {url.igduplicate.map((ig, i) => (
-                    <li key={i} className="list-group-item">
-                      <a href={ig} target="_blank">
-                        <span className="text-primary">
-                          https://instagram.com/p/
-                          {ig.replace(
-                            ig.substring(0, ig.length - 1),
-                            makeid(15)
-                          )}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
+                  {url.igduplicate.map((ig, i) =>
+                    ig.includes("instagram") ? (
+                      <li key={i} className="list-group-item">
+                        <a href={ig} target="_blank">
+                          <span className="text-primary">
+                            https://instagram.com/p/
+                            {ig.replace(
+                              ig.substring(0, ig.length - 1),
+                              makeid(15)
+                            )}
+                          </span>
+                        </a>
+                      </li>
+                    ) : ig.includes("twitter") ? (
+                      <li key={i} className="list-group-item">
+                        <a href={ig} target="_blank">
+                          <span className="text-primary">
+                            https://twitter.com/
+                            {ig.replace(
+                              ig.substring(0, ig.length - 1),
+                              makeid(10)
+                            )}
+                          </span>
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={i} className="list-group-item">
+                        <a href={ig} target="_blank">
+                          <span className="text-primary">
+                            https://www.facebook.com/
+                            {ig.replace(
+                              ig.substring(0, ig.length - 1),
+                              makeid(10)
+                            )}
+                          </span>
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </div>
