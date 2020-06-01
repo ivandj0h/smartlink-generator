@@ -3,14 +3,14 @@ import "firebase/analytics";
 import "firebase/firestore";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyCfvrF1jmbmeZ8xUp4ghjON5MQ4TXYmwLo",
-  authDomain: "link-generate-tblg.firebaseapp.com",
-  databaseURL: "https://link-generate-tblg.firebaseio.com",
-  projectId: "link-generate-tblg",
-  storageBucket: "link-generate-tblg.appspot.com",
-  messagingSenderId: "190788353250",
-  appId: "1:190788353250:web:b1712dee3bc2cf769e32bb",
-  measurementId: "G-XR0V4C9T24",
+  apiKey: process.env.REACT_APP_FIREBASE_API_ID,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSANGING_SENDER_ID,
+  appId: process.env.REACT_APP_GITHUB_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_GITHUB_FIREBASE_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
