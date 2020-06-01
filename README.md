@@ -46,9 +46,11 @@ yarn build
 
 ### ScreenShoot
 
+Here are the Screenshoot of this application
+
 ![Dashboard](captured/input.jpg "This is input captured")
 
-#### Facebook Result
+#### Instagram Result
 
 ![Dashboard](captured/results_instagram.jpg "This is the results of instagram's captured")
 
@@ -56,6 +58,6 @@ yarn build
 
 ![Dashboard](captured/results_facebook.jpg "This is the results of facebook's captured")
 
-#### Facebook Result
+#### Twitter Result
 
 ![Dashboard](captured/results_twitter.jpg "This is the results of twitter's captured")
